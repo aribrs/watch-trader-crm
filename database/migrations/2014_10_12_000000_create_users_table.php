@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Employee;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_active')->default(true);
             $table->tinyInteger('level')->default(0);
-            $table->foreignIdFor(Employee::class)->nullable();
+            $table->foreignId('employee_id')->nullable()->constrained();
             $table->rememberToken();
             $table->string('updated_by')->nullable();
             $table->timestamps();

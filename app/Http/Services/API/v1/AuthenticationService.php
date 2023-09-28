@@ -44,7 +44,7 @@ class AuthenticationService extends BaseService
 
             $user = Auth::user();
 
-            $token = $user->createToken('MyApp')->plainTextToken;
+            $token = $user->createToken('Personal Token')->plainTextToken;
 
             return self::postResponse(200, compact('user', 'token'), 'User login successfully.');
 

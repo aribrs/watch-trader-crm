@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class BaseService
 {
-    public static function get($url, $queryParam = [])
+    public static function getApi($url, $queryParam = [])
     {
         $response = Http::get($url, $queryParam);
 
@@ -72,4 +72,5 @@ class BaseService
 
         return $result;
     }
+
 }

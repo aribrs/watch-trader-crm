@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Leads;
-use App\Models\Schedules;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('schedule_realizations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Leads::class);
-            $table->foreignIdFor(Schedules::class);
-            $table->bigInteger('meet_expense_amount')->default(0);
-            $table->bigInteger('ride_expense_amount')->default(0);
-            $table->bigInteger('total_expense_amount')->default(0);
+            $table->foreignId('lead_id')->constrained();
+            $table->foreignId('schedule_id')->constrained();
+            $table->double('meet_expense', null, null, true)->default(0);
+            $table->double('ride_expense', null, null, true)->default(0);
+            $table->double('total_expense', null, null, true)->default(0);
             $table->string('customer_feedback')->nullable();
             $table->boolean('is_receipt_uploaded')->detault(false);
             $table->string('updated_by')->nullable();

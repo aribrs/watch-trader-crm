@@ -8,7 +8,7 @@ class ProductService extends BaseService
 
     public static function getData($param = [])
     {
-        $param = !empty($param) ?: ['mode' => 'all', 'page' => 1];
+        $param = !empty($param) ? $param : ['mode' => 'all', 'page' => 1];
         return self::getApiWT(self::URL, $param);
     }
 }

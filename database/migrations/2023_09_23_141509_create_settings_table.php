@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('label');
             $table->string('value')->nullable();
             $table->string('updated_by')->nullable();
-
             $table->timestamps();
             $table->softDeletes();
         });

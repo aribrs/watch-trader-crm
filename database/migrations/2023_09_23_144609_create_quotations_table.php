@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Customers;
-use App\Models\Products;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Customers::class);
+            $table->foreignId('lead_id')->constrained();
             $table->timestamp('expired_at');
-            $table->foreignIdFor(Products::class);
-            $table->bigInteger('discount_amount')->default(0);
-            $table->char('status',1);
+            $table->foreignId('product_id')->constrained();
+            $table->double('price', null, null, true)->default(0);
+            $table->double('discount', null, null, true)->default(0);
+            $table->double('total_price', null, null, true)->default(0);
+            $table->char('status', 1)->nullable();
             $table->string('remark')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();
